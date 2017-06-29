@@ -16,7 +16,7 @@ Enemy.prototype.init = function() {
     this.x = -blockHeight;
     this.y = Math.floor(Math.random() * 3) * blockHeight + supplementY;
     this.speed = Math.floor(Math.random() * 100) + supplementY;
-}
+};
 // 此为游戏必须的函数，用来更新敌人的位置
 // 参数: dt ，表示时间间隙
 Enemy.prototype.update = function(dt) {
@@ -39,20 +39,20 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.init();
-}
+};
 
 Player.prototype.init = function() {
     this.x = 2 * blockWidth;
     this.y = 4 * blockHeight + supplementY;
-}
+};
 
 Player.prototype.update = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.handleInput = function(key) {
     if(key == 'left') {
@@ -67,23 +67,23 @@ Player.prototype.handleInput = function(key) {
     if(key == 'down') {
         this.moveY(1);
     }
-}
+};
 Player.prototype.moveX = function(step) {
     var newX = this.x + step * blockWidth;
     if(newX >= 0 && newX < canvas.width)
         this.x = newX;
-}
+};
 
 Player.prototype.moveY = function(step) {
     var newY = this.y + step * blockHeight;
     if(newY > 0 - supplementY && newY < 6 * blockHeight - supplementY)
         this.y = newY;
     console.log(this.y);
-}
+};
 
 Player.prototype.isWin = function() {
     return this.y <= 0;
-}
+};
 
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
